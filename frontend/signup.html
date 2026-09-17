@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trash Talker - Criar Conta</title>
+  <link rel="icon" href="/logo-talker.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" href="/css/redesign.css" />
+  <script src="/js/ui.js" defer></script>
+  <script>
+    (function () {
+      var theme = localStorage.getItem("theme") || "dark";
+      if (theme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+  <!-- Tela de carregamento - some sozinha (js/preloader.js) quando a
+       página termina de carregar. Reaproveita o logo real do app. -->
+  <div class="tt-preloader" id="ttPreloader" role="status" aria-live="polite" aria-label="Carregando">
+    <div class="tt-face">
+      <img class="tt-base" src="/logo-talker.svg" alt="" />
+      <div class="tt-fill">
+        <img src="/logo-talker.svg" alt="" />
+        <img class="tt-shine" src="/logo-talker.svg" alt="" />
+      </div>
+    </div>
+    <div class="tt-meter">
+      <div class="tt-track"><div class="tt-bar"></div></div>
+      <div class="tt-labels">
+        <span>Carregando</span>
+        <span class="tt-pct" id="ttPct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="auth-page" id="main-content" tabindex="-1">
+    <div class="auth-card">
+      <a class="auth-brand" href="/" aria-label="Trash Talker — início"><img src="/logo-talker.svg" alt="" width="56" height="56" /></a>
+      <h1 class="auth-title">Trash Talker</h1>
+      <p class="auth-subtitle">Crie sua conta</p>
+
+      <!-- js/signup.js intercepta o envio e chama POST /api/signup. -->
+      <form class="auth-form">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="m@example.com" required />
+        </div>
+        <div class="field">
+          <label for="name">Nome</label>
+          <input id="name" name="name" type="text" placeholder="Ex: João Silva" required />
+        </div>
+        <div class="field-row-2 password-fields">
+          <div class="field">
+            <label for="password">Senha</label>
+            <input id="password" name="password" type="password" required minlength="8" />
+          </div>
+          <div class="field">
+            <label for="confirm-password">Confirmar Senha</label>
+            <input id="confirm-password" type="password" required minlength="8" />
+          </div>
+          <ul id="password-requirements" class="password-requirements" hidden></ul>
+        </div>
+
+        <div id="signup-error" class="field-error" hidden></div>
+
+        <button type="submit" class="btn-primary btn-block">Criar Conta</button>
+
+        <p class="auth-footer-text">
+          Já tem uma conta? <a href="/login">Entrar</a>
+        </p>
+      </form>
+    </div>
+    <p class="auth-legal">
+      Ao continuar, você concorda com os nossos
+      <a href="/terms">Termos de Uso</a> e
+      <a href="/privacy">Política de Privacidade</a>.
+    </p>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/preloader.js"></script>
+  <script src="/js/signup.js"></script>
+</body>
+</html>
